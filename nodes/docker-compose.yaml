@@ -1,0 +1,55 @@
+version: '3.8' 
+
+services:
+  
+  ansible-lb:
+    hostname: ansible-lb
+    container_name: ansible-lb
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    ports: 
+     - "2022:22"
+    privileged: true
+    networks:
+     - ansible-lab
+
+  ansible-db:
+    hostname: ansible-db
+    container_name: ansible-db
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    ports: 
+     - "2122:22"
+    privileged: true
+    networks:
+     - ansible-lab
+
+  ansible-backend1:
+    hostname: ansible-backend1
+    container_name: ansible-backend1
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    ports: 
+     - "2222:22"
+    privileged: true
+    networks:
+     - ansible-lab
+
+  ansible-backend2:
+    hostname: ansible-backend2
+    container_name: ansible-backend2
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    ports: 
+      - "2322:22"
+    privileged: true
+    networks:
+    - ansible-lab
+  
+networks:
+  ansible-lab:
+    name: ansible-lab
