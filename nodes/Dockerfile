@@ -17,7 +17,8 @@ COPY ./config/sshkey.pub /home/$USERNAME/.ssh/authorized_keys
 USER root
 RUN chown $USERNAME /home/$USERNAME/.ssh/authorized_keys && \
 chmod 600 /home/$USERNAME/.ssh/authorized_keys
-RUN echo "${USERNAME} ALL=(ALL) NOPASSWD: ALL " >> /etc/sudoers
+# RUN echo "${USERNAME} ALL=(ALL) NOPASSWD: ALL " >> /etc/sudoers
+# RUN echo 'Docker!' | passwd --stdin root 
 
 # Run ssh service
 RUN service ssh start
